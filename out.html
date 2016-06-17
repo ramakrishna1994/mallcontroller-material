@@ -49,17 +49,31 @@
     <div class="col s12">
 	<div class="card-panel white lighten-2 hoverable">
       <ul class="tabs hide-on-small-only">
-        <li class="tab col s3"><a href="#test1">Vehicle Number</a></li>
-        <li class="tab col s3"><a class="active" href="#test2">Mobile Number</a></li>
-        <li class="tab col s3"><a href="#test3">Token</a></li>
+        <li class="tab col s4"><a href="#test1">Vehicle Number</a></li>
+        <li class="tab col s4"><a class="active" href="#test2">Mobile Number</a></li>
+        <li class="tab col s4"><a href="#test3">Token</a></li>
       </ul>
 	  
-	  <ul class="tabs hide-on-large-only">
-        <li class="tab col s3"><a href="#test1">Vehc #</a></li>
-        <li class="tab col s3"><a class="active" href="#test2">Mob #</a></li>
-        <li class="tab col s3"><a href="#test3">Token</a></li>
+	  <ul class="tabs hide-on-med-and-up">
+        <li class="tab col s4"><a href="#test1">Vehc #</a></li>
+        <li class="tab col s4"><a class="active" href="#test2">Mob #</a></li>
+        <li class="tab col s4"><a href="#test3">Token</a></li>
       </ul>
     </div>
+	
+	<div class="col s12">
+		
+		<div class="row">
+						<center>
+									<div class="col s12 hide" id="status">
+										
+								</div>
+							
+						  </center>
+	
+	</div>
+	</div>
+	
     <div id="test1">
 		
 							<div class="col s12 m6 offset-m3">
@@ -91,7 +105,7 @@
 							</div>
 							
 							<div class="input-field col s12 center-align">
-								<button class="btn waves-effect waves-purple" type="submit" name="action" onclick="makeCustIn()">Search
+								<button class="btn waves-effect waves-purple" type="submit" name="action" onclick="searchCustUsingVehcNo()">Search
 									<i class="material-icons right">search</i>
 								</button>
 							</div>
@@ -109,7 +123,7 @@
 						</div>
 						
 						<div class="input-field col s12 center-align">
-							<button class="btn waves-effect waves-purple" type="submit" name="action" onclick="makeCustIn()">Search
+							<button class="btn waves-effect waves-purple" type="submit" name="action" onclick="searchCustUsingMobNum()">Search
 								<i class="material-icons right">search</i>
 							  </button>
 						</div>
@@ -121,13 +135,15 @@
 			<div class="col s12 m6 offset-m3">
 							<div class="card-panel hoverable white lighten-2">
 								<div class="row">
+									
+						  
 						<div class="input-field col s12">
-						  <input id="mobile_number" type="text" class="validate" length="10" size="10">
-						  <label for="mobile_number">Token</label>
+						  <input id="token" type="text" class="validate" length="10" size="10">
+						  <label for="token">Token</label>
 						</div>
 						
 						<div class="input-field col s12 center-align">
-							<button class="btn waves-effect waves-purple" type="submit" name="action" onclick="makeCustIn()">Search
+							<button class="btn waves-effect waves-purple" type="submit" name="action" onclick="searchCustUsingToken()">Search
 								<i class="material-icons right">search</i>
 							  </button>
 						</div>
@@ -142,13 +158,13 @@
 
   
   
-       <div class="row" style="margin-top:1%">
+       <div class="row">
 			
 			
 			
 			<div class="col s12 m12 l12 center-align">
 				
-				<div class="card-panel hoverable white lighten-2" id="loader">
+				<div class="card-panel hoverable white lighten-2 hide" id="loader">
 				
 				
 				
@@ -196,37 +212,13 @@
 				</div>
 				
 				
-				<div class="card-panel hoverable white lighten-2" id="table">
+				<div class="card-panel hoverable white lighten-2 hide" id="table">
 					
-							
-        
-					  
-					 <table class="centered">
-						<thead>
-						  <tr>
-							  <th data-field="id">Name </th>
-							  <th data-field="name">Item Name </th>
-							  <th data-field="price">Item Price </th>
-						  </tr>
-						</thead>
+				</div>
 
-						<tbody>
-							
-						  <tr>
-							<td>Alvin</td>
-							<td>Eclair</td>
-							<td>$0.87</td>
-						  </tr>
-						  
-						</tbody>
-					  </table>
-					  
-					  
-					  
-					 
-					  
-  
-  
+				
+				<div class="card-panel hoverable white lighten-2 hide" id="noresults">
+						<center>No Results Found</center>
 				</div>
 				
 				
