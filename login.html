@@ -16,6 +16,7 @@
       
 	  <!-- Compiled and minified JavaScript -->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+		
 	  
     </head>
 
@@ -42,18 +43,67 @@
   
 	  
 	<div class="container ">
-       <div class="row">
+       <div class="row" style="margin-top:10%">
 			<div class="col s12 m6 offset-m3">
 				<div class="card-panel white lighten-2 hoverable">
-					<div class="row">
-						
-						  <div class="progress">
-							  <div class="indeterminate"></div>
-						  </div>
+					<div class="row ">
+					
+					<!------------------loader division-------------->
+						<center>
+						  <div class="preloader-wrapper small active hide" id="loader">
+							  <div class="spinner-layer spinner-blue">
+								<div class="circle-clipper left">
+								  <div class="circle"></div>
+								</div><div class="gap-patch">
+								  <div class="circle"></div>
+								</div><div class="circle-clipper right">
+								  <div class="circle"></div>
+								</div>
+							  </div>
+
+							  <div class="spinner-layer spinner-red">
+								<div class="circle-clipper left">
+								  <div class="circle"></div>
+								</div><div class="gap-patch">
+								  <div class="circle"></div>
+								</div><div class="circle-clipper right">
+								  <div class="circle"></div>
+								</div>
+							  </div>
+
+							  <div class="spinner-layer spinner-yellow">
+								<div class="circle-clipper left">
+								  <div class="circle"></div>
+								</div><div class="gap-patch">
+								  <div class="circle"></div>
+								</div><div class="circle-clipper right">
+								  <div class="circle"></div>
+								</div>
+							  </div>
+
+							  <div class="spinner-layer spinner-green">
+								<div class="circle-clipper left">
+								  <div class="circle"></div>
+								</div><div class="gap-patch">
+								  <div class="circle"></div>
+								</div><div class="circle-clipper right">
+								  <div class="circle"></div>
+								</div>
+							  </div>
+							</div>
+							
+							
+						<div class="input-field col s12 hide" id="status" style="padding-bottom:5%"> 
+						 
+						</div>
+							
+						  </center>
+						  
+						  <!----------------------->
 						  
 						<div class="input-field col s12">
-						  <input id="last_name" type="text" class="validate">
-						  <label for="user_name">Username</label>
+						  <input id="username" type="text" class="validate">
+						  <label for="username">Username</label>
 						</div>
 						
 						<div class="input-field col s12">
@@ -62,7 +112,7 @@
 						</div>
 						
 						<div class="input-field col s12 center-align">
-							<button class="btn waves-effect waves-purple" type="submit" name="action">Sign In
+							<button class="btn waves-effect waves-purple" type="submit" name="action" onclick="login()">Sign In
 								<i class="material-icons right">send</i>
 							  </button>
 						</div>
@@ -73,9 +123,6 @@
 	</div>
 	  
 	  
-	  <script>
-		$(".button-collapse").sideNav();
-        
-	  </script>
+	  <script src="js/login.js"></script>
     </body>
   </html>
