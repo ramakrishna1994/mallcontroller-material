@@ -14,18 +14,21 @@ $result=mysqli_query($con,$selectquery) or die(mysqli_error($con));
 
 while($row = mysqli_fetch_array($result))
 {
-					$from = $row['in_time'];
 					/*****setting the default timezone*******/
 					date_default_timezone_set('Asia/Kolkata');
 					$t=time();
+					
+					$from = $row['in_time'];
 					$to = date("Y-m-d H:i:s",$t);
-					echo $from."x";
-					echo $to."x";
+					
 					/****calculatin the difference********/
-					$total = (round(abs($to - $from) / 60,2)) . " minutes";
-					echo $total."x";
+					$datetime1 = new DateTime($from);
+					$datetime2 = new DateTime($to);
+					$interval = $datetime1->diff($datetime2);
+					$elapsed = $interval->format('%h hours %i minutes %S seconds');
+					
 					/*******updating the full customer details table**************/
-					$updatequery = "update table full_cust_details set out_time='".$to."',total_time='".$total."' where token = '".$token."'";
+					$updatequery = "update full_cust_details set out_time='".$to."',total_time='".$elapsed."' where token = '".$token."';";
 					mysqli_query($con,$updatequery) or die(mysqli_error($con));
 					
 					/********deleting the row from in_cust table*************/

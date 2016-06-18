@@ -1,4 +1,4 @@
-create inorbitmall;
+create database inorbitmall;
 
 CREATE TABLE in_cust (
    cust_id INT NOT NULL AUTO_INCREMENT,
@@ -14,7 +14,7 @@ CREATE TABLE full_cust_details (
    vehc_no VARCHAR(100) NOT NULL,
    in_time DATETIME NOT NULL,
    out_time DATETIME,
-   total_time DATETIME,
+   total_time VARCHAR(100),
    mobile_no VARCHAR(100) NOT NULL,
    token VARCHAR(100) NOT NULL,
    PRIMARY KEY ( cust_id )

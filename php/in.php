@@ -8,7 +8,7 @@ $mobilenumber=mysqli_real_escape_string($con,$_POST['mobile_number']);
 /*****setting the default timezone*******/
 date_default_timezone_set('Asia/Kolkata');
 $t=time();
-$now = date("Y-m-d h:i:s",$t);
+$now = date("Y-m-d H:i:s",$t);
 
 /*******generating a token**********/
 $token = "inorb".rand(1000,9999);
