@@ -124,7 +124,7 @@ function searchCustUsingToken()
 					document.getElementById("token").focus();
 					document.getElementById("loader").className = "card-panel hoverable white lighten-2 hide";
 					document.getElementById("status").className = "col s12";
-					$('#status').html('<font color="red">Please Enter Mobile Number</font>');
+					$('#status').html('<font color="red">Please Enter Token</font>');
 					return false;
 	}
 	
