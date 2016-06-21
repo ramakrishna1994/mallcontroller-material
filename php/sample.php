@@ -1,24 +1,21 @@
-<?php 
-date_default_timezone_set('Asia/Kolkata');
-$to_time = strtotime("2016-06-18 22:40:52");
-$from_time = strtotime("2016-06-18 22:41:01");
-//echo $to_time;
-//echo $from_time;
-echo round(abs($to_time - $from_time) / 60,2). " minute";
-$timezone = date_default_timezone_get();
-echo "The current server timezone is: " . $timezone;
+<?php
+require_once 'connection.php';
+
+/*****setting the default timezone*******/
 date_default_timezone_set('Asia/Kolkata');
 $t=time();
-echo($t . "<br>");
-echo(date("Y-m-d h:i:s",$t));
-
 $now = date("Y-m-d H:i:s",$t);
-echo $now;
 
+for($i=0;$i<100000;$i++)
+{
+		/*******generating a token**********/
+		$token = "inorb".rand(1000,9999);
+		$vehiclenumber = "AP" . rand(10,99) . "CG" . rand(1000,9999);
+		$mobilenumber = rand(1000000000,9999999999);
+		$insertquery="insert into full_cust_details(vehc_no,in_time,mobile_no,token) values('".$vehiclenumber."','".$now."','".$mobilenumber."','".$token."');" ;
+		$result=mysqli_query($con,$insertquery) or die(mysqli_error($con));
+		echo "----".$i."------";
+		echo "";
+}
 
-$datetime1 = new DateTime('2016-06-18 22:40:52');
-$datetime2 = new DateTime('2016-06-18 22:43:59');
-$interval = $datetime1->diff($datetime2);
-$elapsed = $interval->format('%y years %m months %a days %h hours %i minutes %S seconds');
-echo $elapsed;
 ?>
