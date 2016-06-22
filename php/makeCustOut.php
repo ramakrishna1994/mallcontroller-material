@@ -10,7 +10,8 @@ $token=mysqli_real_escape_string($con,$_POST['token']);
 $selectquery = "select * from in_cust where token = '".$token."';";
 $result=mysqli_query($con,$selectquery) or die(mysqli_error($con));
 
-
+$json = "[";
+$error = 1;
 
 while($row = mysqli_fetch_array($result))
 {
@@ -31,11 +32,24 @@ while($row = mysqli_fetch_array($result))
 					$updatequery = "update full_cust_details set out_time='".$to."',total_time='".$elapsed."' where token = '".$token."';";
 					mysqli_query($con,$updatequery) or die(mysqli_error($con));
 					
+					$error = 0;
+					$json.='{';
+					$json.='"token":"'.$row['token'].'",';
+					$json.='"vehcNo":"'.$row['vehc_no'].'",';
+					$json.='"mobNo":"'.$row['mobile_no'].'",';
+					$json.='"inTime":"'.$row['in_time'].'",';
+					$json.='"outTime":"'.$to.'",';
+					$json.='"totalTime":"'.$elapsed.'"';
+					$json.='},';
+					
 					/********deleting the row from in_cust table*************/
 					$deletequery = "delete from in_cust where token = '".$token."';";
 					mysqli_query($con,$deletequery) or die(mysqli_error($con));
+					
+					
 }
 
-
+$json.='{"error":'.$error.'}]';
+echo $json;
 mysqli_close($con);
 ?>

@@ -16,6 +16,7 @@ $(document).ready(function() {
 	document.getElementById("loader").className = "card-panel hoverable white lighten-2";
 	document.getElementById("status").className = "input-field col s12 hide";
 	document.getElementById("table").className = "card-panel hoverable white lighten-2 hide";
+	document.getElementById("fullcusttable").className = "card-panel hoverable white lighten-2 hide";
 	document.getElementById("noresults").className = "card-panel hoverable white lighten-2 hide";
 	if(mobileNumber == "")
 	{
@@ -58,6 +59,7 @@ function searchCustUsingVehcNo()
 	document.getElementById("loader").className = "card-panel hoverable white lighten-2";
 	document.getElementById("status").className = "input-field col s12 hide";
 	document.getElementById("table").className = "card-panel hoverable white lighten-2 hide";
+	document.getElementById("fullcusttable").className = "card-panel hoverable white lighten-2 hide";
 	document.getElementById("noresults").className = "card-panel hoverable white lighten-2 hide";
 	
 				if(document.getElementById("district").value == "")
@@ -118,6 +120,7 @@ function searchCustUsingToken()
 	document.getElementById("loader").className = "card-panel hoverable white lighten-2";
 	document.getElementById("status").className = "input-field col s12 hide";
 	document.getElementById("table").className = "card-panel hoverable white lighten-2 hide";
+	document.getElementById("fullcusttable").className = "card-panel hoverable white lighten-2 hide";
 	document.getElementById("noresults").className = "card-panel hoverable white lighten-2 hide";
 	if(token == "")
 	{
@@ -176,7 +179,7 @@ function filltable(data)
 								+'<td>'+data[i].vehcNo+'</td>'
 								+'<td>'+data[i].mobNo+'</td>'
 								+'<td>'+data[i].inTime+'</td>'
-								+'<td><a class="waves-effect waves-light btn" onclick="makeCustOut(\''+data[i].token+'\')"><i class="material-icons left">cloud</i>OUT</a></td>'
+								+'<td><a class="waves-effect waves-light btn" onclick="makeCustOut(\''+data[i].token+'\')"><i class="material-icons left">input</i>OUT</a></td>'
 								+'</tr>';
 		}
 						  
@@ -191,6 +194,9 @@ function filltable(data)
 
 function makeCustOut(token)
 {
+				document.getElementById("table").className = "card-panel hoverable white lighten-2 hide";
+				document.getElementById("fullcusttable").className = "card-panel hoverable white lighten-2 hide";
+				document.getElementById("loader").className = "card-panel hoverable white lighten-2";
 				var formData = new FormData();
 				
 				formData.append( 'token',token);
@@ -205,8 +211,50 @@ function makeCustOut(token)
 						contentType: false,
 						success: function (response) 
 						{
-							alert("success");
+							
+							fillCustTable(response);
 						}
 						});
 				});
+	}
+	
+	
+	function fillCustTable(data)
+	{
+		
+	
+		var innerhtml = 	'<table class="centered">'
+							+'<thead>'
+							+'<tr>'
+							+'<th >S.No</th>'
+							+'<th >Token</th>'
+							+'<th >Vehc #</th>'
+							+'<th >Mob #</th>'
+							+'<th >In Time</th>'
+							+'<th >Out Time</th>'
+							+'<th >Total Time</th>'
+							+'</tr>'
+							+'</thead>'
+							+'<tbody>';
+			for(var i=0;i<data.length-1;i++)
+			{
+							innerhtml +='<tr>'
+									+'<td>'+(i+1)+'</td>'
+									+'<td>'+data[i].token+'</td>'
+									+'<td>'+data[i].vehcNo+'</td>'
+									+'<td>'+data[i].mobNo+'</td>'
+									+'<td>'+data[i].inTime+'</td>'
+									+'<td>'+data[i].outTime+'</td>'
+									+'<td>'+data[i].totalTime+'</td>'
+									+'</tr>';
+			}
+							  
+							  
+			innerhtml	+='</tbody>'
+						+'</table>';
+				
+			document.getElementById("loader").className = "card-panel hoverable white lighten-2 hide";
+			document.getElementById("fullcusttable").className = "card-panel hoverable white lighten-2 ";
+			document.getElementById("fullcusttable").innerHTML = innerhtml;
+		
 	}

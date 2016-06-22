@@ -8,9 +8,10 @@ var starting = 0;
 	var mobileNumber = document.getElementById("mobileNumber").value;
 	var vehicleNumber = document.getElementById("vehicleNumber").value;
 	var token = document.getElementById("token").value;
+	document.getElementById('from').value = 100;
 	var limit = 100;
 	var from = 0;
-	
+	starting = 0;
 	
 	
 				var formData = new FormData();
@@ -35,6 +36,13 @@ var starting = 0;
 							starting = 0;
 							fillLoader();
 							var innerhtml = "";
+							
+							if(response[response.length-1].error == 1)
+							{
+									document.getElementById("tbody").innerHTML = '<tr><td colspan="7"><center>No Results Found</center></td></tr>';
+									document.getElementById("show").innerHTML = "showing "+starting+" of "+response[response.length-1].totalResults+" results";
+									return;
+							}
 							for(var i=0;i<response.length-1;i++)
 							{
 								innerhtml += '	<tr>'
